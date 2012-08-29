@@ -192,6 +192,7 @@ sub register_m{
     my $self = shift;
     my $session = $self->session;
     my $tmpl = $self->load_tmpl("register.tmpl", utf8=> 1);
+    $tmpl->param(TITLE => "Registration");
     $tmpl->param(REGISTERING => 1);
     if (defined $session->param('register_failed')){
         $tmpl->param(REGISTER_ERROR => $session->param('register_failed'));
