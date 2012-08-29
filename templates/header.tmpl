@@ -1,0 +1,50 @@
+<html>
+<head>
+<title><TMPL_VAR name="TITLE"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/site.css" />
+<TMPL_LOOP name="JS_SCRIPTS">
+<script />
+</TMPL_LOOP>
+</head>
+<body>
+<div class="page-wrapper">
+<div class="header">
+<div id="header">
+<div id="login-stylized">
+<TMPL_UNLESS name="LOGGED_IN">
+<form method="post">
+    <input type="hidden" name="rm" value="do_login"/>
+	<label>ユーザー名: </label><input type="text" name="USERNAME"/>
+	<label>パスワード: </label><input type="password" name="PASSWORD"/>
+	<input type="submit" value="ログイン"/>
+</form>
+<TMPL_IF name="LOGIN_FAILED">Wrong username or password</TMPL_IF>
+<TMPL_UNLESS name="REGISTERING"><a href="index.pl?rm=register">ユーザー登録</a></TMPL_UNLESS>
+<TMPL_ELSE>
+<p>Welcome <TMPL_VAR name="USERNAME"/>. <a href="index.pl?rm=logout">ログアウト</a></p>
+</TMPL_UNLESS>
+</div>
+<div class="spacer"></div>
+<!-- header div ends here-->
+</div>
+</div>
+<div id="menu-bar">
+<div id="search-bar">
+<form name="search" method="post">
+<input type="hidden" name="rm" value="search"/>
+キーワード<input type="text" name="keyword"/>
+<input type="submit" value="検索" style="width:40px"/>
+</form>
+</div>
+<div id="current-index-bar"><a href="index.pl">Home</a>
+ <TMPL_LOOP name="CURRENT_INDEX">
+  <TMPL_UNLESS name="INDEX_LINK">
+   <span>　〉<TMPL_VAR name="INDEX_NAME"><span>
+  <TMPL_ELSE>
+   <span>　〉<a href="<TMPL_VAR name='INDEX_LINK'>"><TMPL_VAR name='INDEX_NAME'></a></span>
+  </TMPL_UNLESS>
+ </TMPL_LOOP>
+</div>
+<div class="spacer"></div>
+</div>

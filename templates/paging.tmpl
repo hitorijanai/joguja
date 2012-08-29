@@ -1,0 +1,7 @@
+<div id="paging">
+  <TMPL_IF name='PREV_PAGE'><span class="page-nav"><a href="index.pl?rm=<TMPL_VAR name='PAGE_RM'>&page=<TMPL_VAR name='PREV_PAGE'>">前のページ</a></span></TMPL_IF>
+  <TMPL_LOOP name='NAV_PAGES'>
+  <span class="page-nav"><a href="index.pl?rm=<TMPL_VAR name='PAGE_RM'>&page=<TMPL_VAR name='PAGE_NUM'>"><TMPL_VAR name='PAGE_NUM'></a></span>
+  </TMPL_LOOP>
+  <TMPL_IF name='NEXT_PAGE'><span class="page-nav"><a href="index.pl?rm=<TMPL_VAR name='PAGE_RM'>&page=<TMPL_VAR name='NEXT_PAGE'>">次のページ</a></span></TMPL_IF>
+ </div>

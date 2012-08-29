@@ -1,0 +1,46 @@
+<script type="text/javascript">
+function confirmDelete(url){
+    var res = confirm("デリート？");
+    if (res==true){
+        window.open(url,"_self");
+    }
+}
+</script>
+
+<TMPL_LOOP name="POSTS">
+<div class="post">
+ <div class="user-profile">
+  <div class="profile"><span>Name: </span></div><TMPL_VAR name="PROF_NAME">
+  <TMPL_IF name="PROF_JOIN_DATE"><div class="profile"><span>Join date: </span></div><TMPL_VAR name="PROF_JOIN_DATE"></TMPL_IF>
+  <TMPL_IF name="PROF_TOTAL_POST"><div class="profile"><span>Total posts: </span></div><TMPL_VAR name="PROF_TOTAL_POST"></TMPL_IF>
+ </div>
+ <div class="post-content">
+  <div class="post-title">
+   <span class="title"><TMPL_VAR name="POST_TITLE"></span>
+   <div class="post-info"><TMPL_VAR name="POST_DATE"> <TMPL_IF name="POST_ID"> <B>PID#<TMPL_VAR name="POST_ID"></B></TMPL_IF></div>
+   <div class="spacer"></div>
+  </div>
+  <hr/>
+  <div class="post-body">
+  <TMPL_VAR name="POST_BODY_HTML">
+  </div>
+ </div>
+ <div class="spacer"></div>
+</div>
+
+<TMPL_UNLESS name="CONFIRMATION">
+<div id="stylized" class="no-decoration">
+<form action="index.pl" method="post">
+<div class="spacer"></div>
+<TMPL_LOOP name="HIDDEN_POST">
+ <input type="hidden" name="<TMPL_VAR name='HP_NAME'>" value="<TMPL_VAR name='HP_VALUE'>"/>
+</TMPL_LOOP>
+<div class="posting-form">
+<button type="button" onclick="window.open('index.pl?rm=do_postaction&mode=reply&pid=<TMPL_VAR name="PID">&tid=<TMPL_VAR name="TID">&page=<TMPL_VAR name="NPAGE">','_self')" style="width:60px">Reply</button>
+<TMPL_IF name="ALLOW_DELETE"><button type="button" onclick="confirmDelete('index.pl?rm=do_postaction&mode=delete&pid=<TMPL_VAR name="PID">&tid=<TMPL_VAR name="TID">&page=<TMPL_VAR name="NPAGE">')" style="width:60px;margin-left:4px">Delete</button></TMPL_IF>
+</div>
+<div class="spacer"></div>
+</form>
+</div>
+</TMPL_UNLESS>
+</TMPL_LOOP>

@@ -1,0 +1,30 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<div id="main">
+ <h3>何でもいいフォ－ラム</h3>
+ <a href="index.pl?rm=posttopic">Create topic</a>
+ <table class="topic-table">
+ <tbody>
+  <tr class="table-list-head">
+   <td class="topic-name-head">トピック</td><td class="topic-reply-count-head">返信数</td><td class="topic-view-count-head">閲覧数</td><td class="topic-last-post-head">最新記事</td>
+  </tr>
+  <TMPL_LOOP name="THREAD_LIST">
+   <tr class="table-list-row">
+    <td class="topic-name-row">
+     <TMPL_IF name="IS_NEW"><span class="new-notif">[NEW!]</span></TMPL_IF>
+     <a class="topic-link" href="index.pl?rm=showtopic&id=<TMPL_VAR name='THREAD_IDX'>"><TMPL_VAR name="TOPIC"></a><br/>
+     <span class="topic-starter">by <b><TMPL_VAR name="THREAD_STARTER"></b></span>
+    </td>
+    <td class="topic-reply-count-row"><TMPL_VAR name="REPLY_COUNT"></td>
+    <td class="topic-view-count-row"><TMPL_VAR name="VIEW_COUNT"></td>
+    <td><TMPL_VAR name="LAST_POSTER"><br/><TMPL_VAR name="LAST_POST_DATE"></td>
+   </tr>
+  </TMPL_LOOP>
+ </tbody>
+ </table>
+ 
+<TMPL_INCLUDE name="paging.tmpl">
+<!-- main div ends here-->
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

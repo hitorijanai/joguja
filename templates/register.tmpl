@@ -1,0 +1,41 @@
+<TMPL_INCLUDE name="header.tmpl">
+<div id="stylized" class="register-form">
+<form method="post">
+ <TMPL_IF name="REGISTER_ERROR"><h4><TMPL_VAR name="REGISTER_ERROR"></h4></TMPL_IF>
+ <input type="hidden" name="rm" value="do_register"/>
+ 
+<h1>Join now!</h1>
+<p>Please fill this sign up form to become a member.</p>
+
+<label>Name
+<span class="small">Add your name</span>
+</label>
+<input type="text" name="FULLNAME"/>
+
+<label>Email
+<span class="small">Add a valid address</span>
+</label>
+<input type="text" name="EMAIL" />
+
+
+<label>Username
+<span class="small">Your nickname</span>
+</label>
+<input type="text" name="USERNAME" />
+
+<label>Password
+<span class="small">Min. size 6 chars</span>
+</label>
+<input type="password" name="PASSWORD"/>
+
+<label>Confirm Password
+<span class="small">Retype your password</span>
+</label>
+<input type="password" name="CONFIRM_PASSWORD"/>
+ <button type="submit">Register</button>
+<div class="spacer"></div>
+</form>
+<!-- main div ends here-->
+</div>
+
+<TMPL_INCLUDE name="footer.tmpl">
